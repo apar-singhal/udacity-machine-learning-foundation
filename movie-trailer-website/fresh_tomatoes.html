@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet"
+        href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script 
+        src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">
+    </script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .img-description {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: .5s ease;
+            color: #000;
+            background-color: #008CBA;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            cursor: pointer;
+        }
+        .movie-tile:hover .img-description {
+            visibility: visible;
+            opacity: 1;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the
+            // only reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#"
+            class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img
+                src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="lCkVr1n1eCA"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/ApYhuwBWzl29Oxe9JJsgL7qILbD.jpg" width="220" height="342">
+    <b><p class="img-description">Following the events of Captain America: Civil War, Peter Parker, with the help of his mentor Tony Stark, tries to balance his life as an ordinary high school student in Queens, New York City, with fighting crime as his superhero alter ego Spider-Man as a new threat, the Vulture, emerges.</p></b>
+    <h2>Spider-Man: Homecoming</h2>
+    <h4>Release Date: 2017-07-05</h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="LEE7KNaczb8"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/tb86j8jVCVsdZnzf8I6cIi65IeM.jpg" width="220" height="342">
+    <b><p class="img-description">Several years after the tragic death of their little girl, a dollmaker and his wife welcome a nun and several girls from a shuttered orphanage into their home, soon becoming the target of the dollmaker's possessed creation, Annabelle.</p></b>
+    <h2>Annabelle: Creation</h2>
+    <h4>Release Date: 2017-08-09</h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="v7MGUNV8MxU"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/wHJKSDX1ZZqL5pvewihMgSDTQyf.jpg" width="220" height="342">
+    <b><p class="img-description">Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his homeworld and the end of Asgardian civilization, at the hands of an all-powerful new threat, the ruthless Hela.</p></b>
+    <h2>Thor: Ragnarok</h2>
+    <h4>Release Date: 2017-10-25</h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="sKyLJI91EM0"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/f8Ng1Sgb3VLiSwAvrfKeQPzvlfr.jpg" width="220" height="342">
+    <b><p class="img-description">Autobots and Decepticons are at war, with humans on the sidelines. Optimus Prime is gone. The key to saving our future lies buried in the secrets of the past, in the hidden history of Transformers on Earth.</p></b>
+    <h2>Transformers: The Last Knight</h2>
+    <h4>Release Date: 2017-06-21</h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="6DBi41reeF0"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/5qcUGqWoWhEsoQwNUrtf3y3fcWn.jpg" width="220" height="342">
+    <b><p class="img-description">Gru and his wife Lucy must stop former '80s child star Balthazar Bratt from achieving world domination.</p></b>
+    <h2>Despicable Me 3</h2>
+    <h4>Release Date: 2017-06-29</h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center"
+    data-trailer-youtube-id="5lGoQhFb4NM"
+    data-toggle="modal" data-target="#trailer">
+    <img src="https://image.tmdb.org/t/p/w500/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg" width="220" height="342">
+    <b><p class="img-description">An Amazon princess comes to the world of Man to become the greatest of the female superheroes.</p></b>
+    <h2>Wonder Woman</h2>
+    <h4>Release Date: 2017-05-30</h4>
+</div>
+
+    </div>
+
+    <footer>
+        <p>
+            <b>Developed By:</b> Apar Singhal
+            [ <a href="mailto:aparsinghal@gmail.com">
+                aparsinghal@gmail.com
+            </a> ]
+        </p>
+        <p><b>Source Credits:</b> The Movie Database</p>
+    </footer>
+</body>
+</html>
