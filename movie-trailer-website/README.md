@@ -16,4 +16,4 @@ Steps To Run
 
 ### For educational purpose, this page contains static list of movies, mentioned in list_movie_names[] in entertainment_Center.py.
 
-### We can change the name of the movies, and will get the trailer for them. Or we can create it dynamically by providing a search box to the user to enter any movie name.
+### We can change the name of the movies, and will get the trailer for them. Or we can make it dynamic by providing a search box to the user to enter a movie name.
